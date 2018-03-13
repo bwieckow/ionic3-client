@@ -29,11 +29,11 @@ export class LoginPage {
   }
 
   onSignIn() {
-    this.logger.info('SignInPage: onSignIn()');
+    //this.logger.info('SignInPage: onSignIn()');
   }
 
   onForgotPassword() {
-    this.logger.info('SignInPage: onForgotPassword()');
+    //this.logger.info('SignInPage: onForgotPassword()');
   }
 
   ionViewDidLoad() {
