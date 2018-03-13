@@ -6,14 +6,20 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Login</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Zaloguj</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-row class="app-icon-container">
+    <ion-col text-center>
+      <ion-icon name="ionic" class="app-icon-zoom"></ion-icon>
+    </ion-col>
+  </ion-row>
 
   <form [formGroup]="credentialsForm">
 
@@ -23,15 +29,27 @@
                  type="email"></ion-input>
     </ion-item>
 
+    <div *ngIf="!credentialsForm.controls.email.valid &&
+        credentialsForm.controls.email.dirty"
+         class="validator-error">
+      Please enter a valid email.
+    </div>
+
     <ion-item>
-      <ion-label floating>Password</ion-label>
+      <ion-label floating>Hasło</ion-label>
       <ion-input [formControl]="credentialsForm.controls['password']"
                  type="password"></ion-input>
     </ion-item>
 
+    <div *ngIf="!credentialsForm.controls.password.valid &&
+        credentialsForm.controls.password.dirty"
+         class="validator-error">
+      Please enter a valid password.
+    </div>
+
     <ion-row>
       <ion-col text-center>
-        <button ion-button block color="secondary" (click)="onSignIn()">
+        <button ion-button block color="primary" [disabled]="!credentialsForm.valid" (click)="onSignIn()">
           Sign in
         </button>
       </ion-col>

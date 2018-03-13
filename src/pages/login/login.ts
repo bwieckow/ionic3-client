@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TabsPage} from "../tabs/tabs";
+import {regexValidators} from "../../app/validator";
 
 /**
  * Generated class for the LoginPage page.
@@ -24,8 +25,14 @@ export class LoginPage {
               private formBuilder: FormBuilder) {
 
     this.credentialsForm = this.formBuilder.group({
-      email: [''],
-      password: ['']
+      email: ['', Validators.compose([
+        Validators.pattern(regexValidators.email),
+        Validators.required
+      ])],
+      password: ['', Validators.compose([
+        Validators.pattern(regexValidators.password),
+        Validators.required
+      ])]
     });
   }
 
